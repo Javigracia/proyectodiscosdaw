@@ -67,3 +67,7 @@ C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\bin\es\Sy
 C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\obj\Debug\DiscosDaw.csprojResolveAssemblyReference.cache
 C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\obj\Debug\DiscosDaw.dll
 C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\obj\Debug\DiscosDaw.pdb
+C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\bin\EntityFramework.dll
+C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\bin\EntityFramework.SqlServer.dll
+C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\bin\EntityFramework.xml
+C:\Users\alumno\Documents\GitHub\proyectodiscosdaw\DiscosDaw\DiscosDaw\bin\EntityFramework.SqlServer.xml
