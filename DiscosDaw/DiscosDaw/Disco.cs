@@ -9,9 +9,10 @@
 
 namespace DiscosDaw
 {
+    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Disco
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +21,21 @@ namespace DiscosDaw
             this.DiscoTipoes = new HashSet<DiscoTipo>();
             this.Puntuacions = new HashSet<Puntuacion>();
         }
-    
+
+        
         public int IdDisco { get; set; }
         public string Titulo { get; set; }
         public Nullable<double> Agno { get; set; }
+        [JsonIgnore]
         public Nullable<int> IdInterprete { get; set; }
-    
+
+        
         public virtual Interprete Interprete { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<DiscoTipo> DiscoTipoes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        [JsonIgnore]
         public virtual ICollection<Puntuacion> Puntuacions { get; set; }
     }
 }
