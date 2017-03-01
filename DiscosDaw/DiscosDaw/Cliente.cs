@@ -12,6 +12,7 @@ namespace DiscosDaw
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Cliente
     {
@@ -20,10 +21,13 @@ namespace DiscosDaw
         {
             this.Puntuacions = new HashSet<Puntuacion>();
         }
-    
+        
+        [Key]
         public int id { get; set; }
         public string Nombre { get; set; }
+        [Required(ErrorMessage = "Login requerido")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "Contraseña requerida")]
         public string Password { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
