@@ -204,6 +204,8 @@
     <Compile Include="Controllers\DiscoTipoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\VdiscoController.cs" />
+    <Compile Include="Controllers\Vtop5Controller.cs" />
     <Compile Include="Disco.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -236,6 +238,15 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Tipo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_disco.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_tipo.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
+    <Compile Include="v_top5.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
   </ItemGroup>

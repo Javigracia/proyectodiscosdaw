@@ -31,5 +31,8 @@ namespace DiscosDaw
         public virtual DbSet<Interprete> Interpretes { get; set; }
         public virtual DbSet<Puntuacion> Puntuacions { get; set; }
         public virtual DbSet<Tipo> Tipoes { get; set; }
+        public virtual DbSet<v_disco> v_disco { get; set; }
+        public virtual DbSet<v_tipo> v_tipo { get; set; }
+        public virtual DbSet<v_top5> v_top5 { get; set; }
     }
 }

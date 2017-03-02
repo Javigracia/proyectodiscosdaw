@@ -52,6 +52,38 @@
     <Property Name="IdTipo" Type="int" Nullable="false" />
     <Property Name="tipo" Type="varchar" MaxLength="255" />
   </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Discos.dbo.v_disco' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_disco">
+    <Key>
+      <PropertyRef Name="IdDisco" />
+    </Key>
+    <Property Name="IdDisco" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+    <Property Name="Agno" Type="float" />
+    <Property Name="Interprete" Type="varchar" MaxLength="255" />
+    <Property Name="mediaPuntuacion" Type="int" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Discos.dbo.v_tipo' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_tipo">
+    <Key>
+      <PropertyRef Name="idTipo" />
+    </Key>
+    <Property Name="ndiscos" Type="int" />
+    <Property Name="tipo" Type="varchar" MaxLength="255" />
+    <Property Name="idTipo" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'Discos.dbo.v_top5' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="v_top5">
+    <Key>
+      <PropertyRef Name="IdDisco" />
+    </Key>
+    <Property Name="n5" Type="int" />
+    <Property Name="IdDisco" Type="int" Nullable="false" />
+    <Property Name="Titulo" Type="varchar" MaxLength="255" />
+  </EntityType>
   <Association Name="FK_discointerprete">
     <End Role="Interprete" Type="Self.Interprete" Multiplicity="0..1" />
     <End Role="Disco" Type="Self.Disco" Multiplicity="*" />
@@ -119,6 +151,29 @@
     <EntitySet Name="Interprete" EntityType="Self.Interprete" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Puntuacion" EntityType="Self.Puntuacion" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tipo" EntityType="Self.Tipo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="v_disco" EntityType="Self.v_disco" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_disco].[IdDisco] AS [IdDisco], 
+    [v_disco].[Titulo] AS [Titulo], 
+    [v_disco].[Agno] AS [Agno], 
+    [v_disco].[Interprete] AS [Interprete], 
+    [v_disco].[mediaPuntuacion] AS [mediaPuntuacion]
+    FROM [dbo].[v_disco] AS [v_disco]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_tipo" EntityType="Self.v_tipo" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_tipo].[ndiscos] AS [ndiscos], 
+    [v_tipo].[tipo] AS [tipo], 
+    [v_tipo].[idTipo] AS [idTipo]
+    FROM [dbo].[v_tipo] AS [v_tipo]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="v_top5" EntityType="Self.v_top5" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [v_top5].[n5] AS [n5], 
+    [v_top5].[IdDisco] AS [IdDisco], 
+    [v_top5].[Titulo] AS [Titulo]
+    FROM [dbo].[v_top5] AS [v_top5]</DefiningQuery>
+    </EntitySet>
     <AssociationSet Name="FK_discointerprete" Association="Self.FK_discointerprete">
       <End Role="Interprete" EntitySet="Interprete" />
       <End Role="Disco" EntitySet="Disco" />

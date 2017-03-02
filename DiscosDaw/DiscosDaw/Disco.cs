@@ -22,14 +22,13 @@ namespace DiscosDaw
             this.Puntuacions = new HashSet<Puntuacion>();
         }
 
-        
         public int IdDisco { get; set; }
         public string Titulo { get; set; }
         public Nullable<double> Agno { get; set; }
         [JsonIgnore]
         public Nullable<int> IdInterprete { get; set; }
 
-        
+
         public virtual Interprete Interprete { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         [JsonIgnore]

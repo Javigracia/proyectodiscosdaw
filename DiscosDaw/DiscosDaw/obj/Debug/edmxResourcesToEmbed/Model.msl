@@ -59,5 +59,34 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="v_disco">
+      <EntityTypeMapping TypeName="DiscosModel.v_disco">
+        <MappingFragment StoreEntitySet="v_disco">
+          <ScalarProperty Name="IdDisco" ColumnName="IdDisco" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+          <ScalarProperty Name="Agno" ColumnName="Agno" />
+          <ScalarProperty Name="Interprete" ColumnName="Interprete" />
+          <ScalarProperty Name="mediaPuntuacion" ColumnName="mediaPuntuacion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_tipo">
+      <EntityTypeMapping TypeName="DiscosModel.v_tipo">
+        <MappingFragment StoreEntitySet="v_tipo">
+          <ScalarProperty Name="ndiscos" ColumnName="ndiscos" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="idTipo" ColumnName="idTipo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_top5">
+      <EntityTypeMapping TypeName="DiscosModel.v_top5">
+        <MappingFragment StoreEntitySet="v_top5">
+          <ScalarProperty Name="n5" ColumnName="n5" />
+          <ScalarProperty Name="IdDisco" ColumnName="IdDisco" />
+          <ScalarProperty Name="Titulo" ColumnName="Titulo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

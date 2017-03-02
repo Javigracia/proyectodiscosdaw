@@ -9,7 +9,6 @@
 
 namespace DiscosDaw
 {
-    using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -21,7 +20,7 @@ namespace DiscosDaw
         {
             this.Puntuacions = new HashSet<Puntuacion>();
         }
-        
+
         [Key]
         public int id { get; set; }
         public string Nombre { get; set; }
@@ -31,9 +30,9 @@ namespace DiscosDaw
         public string Password { get; set; }
         public Nullable<System.DateTime> FechaNacimiento { get; set; }
         public Nullable<System.DateTime> FechaRegistro { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        
+
         public virtual ICollection<Puntuacion> Puntuacions { get; set; }
     }
 }
