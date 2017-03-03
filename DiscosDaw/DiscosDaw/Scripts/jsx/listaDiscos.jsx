@@ -9,8 +9,7 @@
             url: this.props.url,
             dataType: 'json',
             success: function (data) {
-                var result = { result: data };
-                this.setState(result);
+                this.setState({ result: data });
             }.bind(this),
             error: function (xhr, status, err) {
                 console.error(this.props.url, status, err.toString());
@@ -31,7 +30,7 @@
                     <td>{this.state.result[i].mediaPuntuacion}</td>
                 </tr>
                 );
-    }
+        }
         return (
         <table className="infoDiscos">
             <thead>

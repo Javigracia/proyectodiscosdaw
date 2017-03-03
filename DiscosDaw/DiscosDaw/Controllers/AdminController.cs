@@ -14,5 +14,12 @@ namespace DiscosDaw.Controllers
         {
             return View();
         }
+
+        public ActionResult Votar()
+        {
+            Cliente user = (Cliente) Session["USUARIO"];
+            ViewBag.idUsuario = user.id;
+            return View();
+        }
     }
 }
