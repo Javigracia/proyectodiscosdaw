@@ -374,10 +374,10 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Auth\Login.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Auth\ErrorLogin.cshtml" />
     <Content Include="Views\ListarDiscos\Index.cshtml" />
     <Content Include="Scripts\jsx\listaDiscos.jsx" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Auth\ErrorLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

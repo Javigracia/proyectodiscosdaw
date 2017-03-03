@@ -9,9 +9,11 @@ namespace DiscosDaw.Controllers
 {
     public class AuthController : Controller
     {
+
         [HttpGet]
         public ActionResult Login()
         {
+            Session["USUARIO"] = null;
             return View();
         }
 
