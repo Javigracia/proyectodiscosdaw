@@ -6,7 +6,8 @@
             userId: document.getElementById("userId").innerHTML,
             diskId: "",
             puntuaciones: "",
-            puntuacion: ""
+            puntuacion: "",
+            button: "Votar"
         };
     },
 
@@ -33,10 +34,15 @@
         });
     },
 
-    onChange: function(event)
+    onChangeDisk: function(event)
     {
-        this.setState({ diskId: event.target.value })
+        this.setState({ diskId: event.target.value });
         this.checkPuntuacion(event.target.value);
+    },
+
+    onChangePun: function(event)
+    {
+        this.setState({ puntuacion: event.target.value.trim() });
     },
 
     checkPuntuacion: function(diskId)
@@ -49,7 +55,7 @@
             {
                 if ((this.state.puntuaciones[contador].Idcliente == this.state.userId) && (this.state.puntuaciones[contador].iddisco == diskId))
                 {
-                    this.setState({ puntuacion: this.state.puntuaciones[contador].Puntuacion1 });
+                    this.setState({ puntuacion: this.state.puntuaciones[contador].Puntuacion1, button: "Modificar Voto" });
                     encontrado = true;
                 }
                 else
@@ -59,8 +65,34 @@
             }
             if (!encontrado)
             {
-                this.setState({ puntuacion: "" });
+                this.setState({ puntuacion: "" , button: "Votar"});
             }
+        }
+    },
+
+    votar: function(event)
+    {
+        event.preventDefault();
+        var datos = {
+            "Idcliente": this.state.userId,
+            "iddisco": this.state.diskId,
+            "Puntuacion1": this.state.puntuacion
+        };
+
+        if (this.state.button == "Votar")
+        {
+            $.ajax({
+                url: this.props.url2,
+                dataType: 'json',
+                type: 'POST',
+                data: datos,
+                success: function (data) {
+                    toastr["success"]("Voto Registrado");
+                }.bind(this),
+                error: function (xhr, status, err) {
+                    console.error(this.props.url, status, err.toString());
+                }.bind(this)
+            });
         }
     },
 
@@ -76,12 +108,15 @@
         }
         return (
         <div>
-            <p>Id disco: {this.state.diskId}</p>
-            <select id="listaDiscos" onChange={this.onChange}>
-                <option value="" selected disabled>Seleccion un Disco</option>
-                {disksNames}
-            </select>
-            <p id="valPuntuacion">Puntuacion: {this.state.puntuacion}</p>
+            <form>
+                <select id="listaDiscos" onChange={this.onChangeDisk}>
+                    <option value="" selected disabled>Seleccion un Disco</option>
+                    {disksNames}
+                </select>
+                <label htmlFor="valPuntuaciones">Valoración: </label>
+                <input type="text" id="valPuntuacion" value={this.state.puntuacion} onChange={this.onChangePun} />
+                <button onClick={this.votar}>{this.state.button}</button>
+            </form>
         </div>
         );
 }
