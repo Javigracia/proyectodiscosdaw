@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Registro";
+}
+<html>
+    <head>
+        <link href="~/Content/toastr.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+            crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
+        <script src="~/Scripts/toastr.min.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="~/Scripts/jquery/registro.js"></script>
+        <meta name="viewport" content="width=device-width" />
+        <title>Registro</title>
+    </head>
+    <body>
+        <h2>Registro: </h2>
+        <form action="" method="post" class="form-horizontal">
+
+            <div class="form-group">
+                <label for="nick" class="control-label col-sm-2">Usuario*:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nick" placeholder="Introduzca su Usuario"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="password" class="control-label col-sm-2">Contraseña*:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="password" placeholder="Introduzca su Contraseña"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="passwordRepeat" class="control-label col-sm-2">Repita su contraseña*:</label>
+                <div class="col-sm-4">
+                    <input type="password" class="form-control" id="passwordRepeat" placeholder="Repita su Contraseña"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="control-label col-sm-2">Email*:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" placeholder="Introduzca su Correo Electrónico" />
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label for="datepicker" class="control-label col-sm-2">Fecha Nacimiento:</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="datepicker"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Registrarse" class="btn-primary"/>
+            </div>
+        </form>
+    </body>
+</html>

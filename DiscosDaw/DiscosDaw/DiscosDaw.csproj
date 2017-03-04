@@ -256,6 +256,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListarDiscosController.cs" />
     <Compile Include="Controllers\PuntuacionesController.cs" />
+    <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VdiscoController.cs" />
     <Compile Include="Controllers\Vtop5Controller.cs" />
@@ -361,6 +362,7 @@
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery\registro.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -388,6 +390,7 @@
     <Content Include="Views\Auth\ErrorLogin.cshtml" />
     <Content Include="Views\Admin\Votar.cshtml" />
     <Content Include="Scripts\jsx\votar.jsx" />
+    <Content Include="Views\Registro\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
