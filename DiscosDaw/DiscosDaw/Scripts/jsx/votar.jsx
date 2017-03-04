@@ -38,7 +38,6 @@
 
     componentDidMount: function() {
         this.obtenerValores();
-        this.validar();
     },
 
     onChangeDisk: function(event)
@@ -65,11 +64,13 @@
         {
             this.setState({ diskId: "" });
         }
+        this.validarDisco(event.target.value.trim());
     },
 
     onChangePun: function(event)
     {
         this.setState({ puntuacion: event.target.value.trim() });
+        this.validarPuntuacion(event.target.value.trim());
     },
 
     checkPuntuacion: function(diskId)
@@ -102,54 +103,139 @@
         this.setState({ button: "Modificar", punId: id });
     },
 
-    votar: function(event)
-    {
-        event.preventDefault();
-        var that = this;
 
-        if (this.state.button == "Votar")
+    validarPuntuacion: function(puntuacion)
+    {
+        $("#errorPuntuacion").text("");
+        var correcto = false;
+
+        if(puntuacion == "")
         {
-            var datos = {
-                "Idcliente": this.state.userId,
-                "iddisco": this.state.diskId,
-                "Puntuacion1": this.state.puntuacion
-            };
-            $.ajax({
-                url: this.props.url2,
-                dataType: 'json',
-                type: 'POST',
-                data: datos,
-                success: function (data) {
-                    toastr["success"]("Voto Registrado");
-                    that.obtenerValores();
-                    that.votado(data.Id);
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    toastr["error"]("Los datos proporcionados no son correctos");
-                }.bind(this)
-            });
+            $("#errorPuntuacion").text("Introduzca una puntuación");
         }
         else
         {
-            var datos = {
-                "Id": this.state.punId,
-                "Idcliente": this.state.userId,
-                "iddisco": this.state.diskId,
-                "Puntuacion1": this.state.puntuacion
-            };
-            $.ajax({
-                url: this.props.url2 + "/" + this.state.punId,
-                dataType: 'json',
-                type: 'PUT',
-                data: datos,
-                success: function (data) {
-                    toastr["success"]("Modificación del voto realizada");
-                    that.obtenerValores();
-                }.bind(this),
-                error: function (xhr, status, err) {
-                    toastr["error"]("Los datos proporcionados no son correctos");
-                }.bind(this)
-            });
+            if (isNaN(puntuacion))
+            {
+                $("#errorPuntuacion").text("Introduzca una puntuación numérica");
+            }
+            else
+            {
+                if (puntuacion < 0 || puntuacion > 10)
+                {
+                    $("#errorPuntuacion").text("Introduzca una puntuación entre 0 y 10");
+                }
+                else {
+                    puntuacion = "" + puntuacion;
+                    if (puntuacion.includes(".") || puntuacion.includes(","))
+                    {
+                        $("#errorPuntuacion").text("La puntuación tiene que ser un número entero");
+                    }
+                    else
+                    {
+                        correcto = true;
+                    }
+                }
+            }
+        }
+        return correcto;
+    },
+
+    validarDisco(disco)
+    {
+        $("#errorDisco").text("");
+        $("#errorPuntuacion").text("");
+        var correcto = false;
+
+        if(disco == "")
+        {
+            $("#errorDisco").text("Seleccione un Disco");
+        }
+        else
+        {
+            var contador = 0;
+            var encontrado = false;
+            while (!encontrado && contador < this.state.result.length)
+            {
+                if (this.state.result[contador].Titulo == disco)
+                {
+                    encontrado = true;
+                    correcto = true;
+                }
+                else
+                {
+                    contador++;
+                }
+            }
+            if (!correcto)
+            {
+                $("#errorDisco").text("No existe un disco con ese nombre en nuestra lista");
+            }
+        }
+        return correcto;
+    },
+
+    verificarDatos: function()
+    {
+        var valido = false;
+        var disco = $("#discoSeleccionado").val().trim();
+        var puntuacion = $("#valPuntuacion").val().trim();
+        
+        if (this.validarDisco(disco) & this.validarPuntuacion(puntuacion))
+        {
+            valido = true;
+        }
+        return valido;
+    },
+
+    votar: function(event)
+    {
+        event.preventDefault();
+        if (this.verificarDatos())
+        {
+            var that = this;
+            if (this.state.button == "Votar") {
+                var datos = {
+                    "Idcliente": this.state.userId,
+                    "iddisco": this.state.diskId,
+                    "Puntuacion1": this.state.puntuacion
+                };
+                $.ajax({
+                    url: this.props.url2,
+                    dataType: 'json',
+                    type: 'POST',
+                    data: datos,
+                    success: function (data) {
+                        toastr["success"]("Voto Registrado");
+                        that.obtenerValores();
+                        that.votado(data.Id);
+                    }.bind(this),
+                    error: function (xhr, status, err) {
+                        toastr["error"]("Los datos proporcionados no son correctos");
+                    }.bind(this)
+                });
+            }
+            else {
+                var datos = {
+                    "Id": this.state.punId,
+                    "Idcliente": this.state.userId,
+                    "iddisco": this.state.diskId,
+                    "Puntuacion1": this.state.puntuacion
+                };
+                $.ajax({
+                    url: this.props.url2 + "/" + this.state.punId,
+                    dataType: 'json',
+                    type: 'PUT',
+                    data: datos,
+                    success: function (data) {
+                        toastr["success"]("Modificación del voto realizada");
+                        that.obtenerValores();
+                    }.bind(this),
+                    error: function (xhr, status, err) {
+                        toastr["error"]("Los datos proporcionados no son correctos");
+                    }.bind(this)
+                });
+            }
         }
     },
 
@@ -165,12 +251,15 @@
         return (
         <div>
             <form>
+                <label htmlFor="discoSeleccionado">Disco: </label>
                 <input type="text" name="disco" id="discoSeleccionado" list="listaDiscos" onChange={this.onChangeDisk} />
+                <span id="errorDisco" className="alert-danger"></span>
                 <datalist id="listaDiscos">
                     {disksNames}
                 </datalist>
                 <label htmlFor="valPuntuaciones">Valoración: </label>
                 <input type="text" id="valPuntuacion" name="puntuacion" value={this.state.puntuacion} onChange={this.onChangePun} />
+                <span id="errorPuntuacion" className="alert-danger"></span>
                 <button onClick={this.votar}>{this.state.button}</button>
             </form>
         </div>
