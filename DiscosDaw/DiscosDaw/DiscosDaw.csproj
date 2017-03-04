@@ -255,6 +255,7 @@
     <Compile Include="Controllers\DiscoTipoesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListarDiscosController.cs" />
+    <Compile Include="Controllers\ListarTop5Controller.cs" />
     <Compile Include="Controllers\PuntuacionesController.cs" />
     <Compile Include="Controllers\RegistroController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -391,6 +392,7 @@
     <Content Include="Views\Admin\Votar.cshtml" />
     <Content Include="Scripts\jsx\votar.jsx" />
     <Content Include="Views\Registro\Index.cshtml" />
+    <Content Include="Views\ListarTop5\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
