@@ -39,7 +39,7 @@ namespace DiscosDaw.Controllers
         [ResponseType(typeof(void))]
         public IHttpActionResult PutPuntuacion(int id, Puntuacion puntuacion)
         {
-            if (!ModelState.IsValid)
+            if (!ModelState.IsValid || !IsValid(puntuacion))
             {
                 return BadRequest(ModelState);
             }
@@ -74,7 +74,8 @@ namespace DiscosDaw.Controllers
         [ResponseType(typeof(Puntuacion))]
         public IHttpActionResult PostPuntuacion(Puntuacion puntuacion)
         {
-            if (!ModelState.IsValid)
+            puntuacion.Fecha = DateTime.Now;
+            if (!ModelState.IsValid || !IsValid(puntuacion))
             {
                 return BadRequest(ModelState);
             }
@@ -83,6 +84,23 @@ namespace DiscosDaw.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = puntuacion.Id }, puntuacion);
+        }
+
+        private Boolean IsValid(Puntuacion puntuacion)
+        {
+            Boolean valido = false;
+            int number = 0;
+            if(Int32.TryParse(puntuacion.Idcliente.ToString(), out number))
+            {
+                if (Int32.TryParse(puntuacion.iddisco.ToString(), out number))
+                {
+                    if (Int32.TryParse(puntuacion.Puntuacion1.ToString(), out number) && puntuacion.Puntuacion1 >= 0 && puntuacion.Puntuacion1 <= 10)
+                    {
+                        valido = true;
+                    }
+                }
+            }
+            return valido;
         }
 
         // DELETE: api/Puntuaciones/5
