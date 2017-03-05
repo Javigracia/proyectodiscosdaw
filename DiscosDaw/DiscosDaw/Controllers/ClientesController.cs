@@ -74,7 +74,8 @@ namespace DiscosDaw.Controllers
         [ResponseType(typeof(Cliente))]
         public IHttpActionResult PostCliente(Cliente cliente)
         {
-            if (!ModelState.IsValid)
+            cliente.FechaRegistro = DateTime.Now;
+            if (!ModelState.IsValid || !IsValid(cliente))
             {
                 return BadRequest(ModelState);
             }
@@ -83,6 +84,24 @@ namespace DiscosDaw.Controllers
             db.SaveChanges();
 
             return CreatedAtRoute("DefaultApi", new { id = cliente.id }, cliente);
+        }
+
+        private Boolean IsValid(Cliente cliente)
+        {
+            var valid = false;
+            if (ModelState.IsValid)
+            {
+                Cliente authUser = null;
+                using (DiscosEntities discosEntities = new DiscosEntities())
+                {
+                    authUser = discosEntities.Clientes.FirstOrDefault(u => u.Email == cliente.Email || u.Nombre == cliente.Nombre);
+                }
+                if (authUser == null && cliente.Email != "" && cliente.Nombre != "" && cliente.Password != "")
+                { 
+                    valid = true;
+                }
+            }
+            return valid;
         }
 
         // DELETE: api/Clientes/5
