@@ -251,16 +251,28 @@
         return (
         <div>
             <form>
-                <label htmlFor="discoSeleccionado">Disco: </label>
-                <input type="text" name="disco" id="discoSeleccionado" list="listaDiscos" onChange={this.onChangeDisk} />
-                <span id="errorDisco" className="alert-danger"></span>
-                <datalist id="listaDiscos">
-                    {disksNames}
-                </datalist>
-                <label htmlFor="valPuntuaciones">Valoración: </label>
-                <input type="text" id="valPuntuacion" name="puntuacion" value={this.state.puntuacion} onChange={this.onChangePun} />
-                <span id="errorPuntuacion" className="alert-danger"></span>
-                <button onClick={this.votar}>{this.state.button}</button>
+                <div className="row">
+                    <div className="col-md-4">
+                        <label htmlFor="discoSeleccionado">Disco: </label>
+                        <input type="text" name="disco" id="discoSeleccionado" list="listaDiscos" onChange={this.onChangeDisk} />
+                        <span id="errorDisco" className="alert-danger"></span>
+                        <datalist id="listaDiscos">
+                            {disksNames}
+                        </datalist>
+                    </div>
+                    <div className="col-md-4">
+                        <label htmlFor="valPuntuaciones">Valoración: </label>
+                        <input type="text" id="valPuntuacion" name="puntuacion" value={this.state.puntuacion} onChange={this.onChangePun} />
+                        <span id="errorPuntuacion" className="alert-danger"></span>
+                    </div>
+
+                <div className="col-md-4"></div>
+                </div>
+                <div className="row">
+                    <div className="col-md-1">
+                        <button className="btn btn-primary btn-lg" onClick={this.votar}>{this.state.button}</button>
+                    </div>
+                </div>
             </form>
         </div>
         );

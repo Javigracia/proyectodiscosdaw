@@ -391,13 +391,13 @@
     <Content Include="Scripts\jsx\listaDiscos.jsx" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Auth\ErrorLogin.cshtml" />
-    <Content Include="Views\Admin\Votar.cshtml" />
     <Content Include="Scripts\jsx\votar.jsx" />
     <Content Include="Views\Registro\Index.cshtml" />
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\ListarDiscos\Index.cshtml" />
     <Content Include="Views\ListarTop5\Index.cshtml" />
+    <Content Include="Views\Admin\Votar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

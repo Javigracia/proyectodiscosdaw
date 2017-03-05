@@ -2,16 +2,27 @@
 @{
     ViewBag.Title = "Votar";
 }
+
+<h2>Votar</h2>
+
 <link href="~/Content/votar.css" rel="stylesheet" />
 <link href="~/Content/toastr.min.css" rel="stylesheet" />
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.3.2/react-dom.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/remarkable/1.7.1/remarkable.min.js"></script>
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
-            integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
-            crossorigin="anonymous"></script>
+        integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+        crossorigin="anonymous"></script>
 <script src="~/Scripts/toastr.min.js"></script>
 
-<p id="userId">@ViewBag.idUsuario</p>
-<div id="content"></div>
+<p style="visibility:hidden" id="userId">@ViewBag.idUsuario</p>
+<div id="content">
+
+</div>
+<div class="clearfix"></div>
+<div class="row">
+    <div class="col-md-1">
+        <br /><p><a href="@Url.Action("Index", "Home")" class="btn btn-primary btn-lg">Volver a Home</a></p>
+    </div>
+</div>
 <script src="@Url.Content("~/Scripts/jsx/votar.jsx")"></script>
