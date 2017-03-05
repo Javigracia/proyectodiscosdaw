@@ -12,14 +12,21 @@ namespace DiscosDaw.Controllers
         // GET: Admin
         public ActionResult Index()
         {
-            return View();
+                return View();
         }
 
         public ActionResult Votar()
         {
-            Cliente user = (Cliente) Session["USUARIO"];
-            ViewBag.idUsuario = user.id;
-            return View();
+            if (Session["USUARIO"] != null)
+            {
+                Cliente user = (Cliente)Session["USUARIO"];
+                ViewBag.idUsuario = user.id;
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login", "Auth");
+            }
         }
     }
 }

@@ -14,6 +14,7 @@ namespace DiscosDaw.Controllers
         public ActionResult Login()
         {
             Session["USUARIO"] = null;
+            //Session.Contents.RemoveAll();
             return View();
         }
 
