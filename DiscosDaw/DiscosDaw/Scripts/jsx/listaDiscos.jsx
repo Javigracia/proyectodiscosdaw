@@ -32,7 +32,7 @@
                 );
         }
         return (
-        <table className="infoDiscos">
+        <table className="table table-responsive table-striped table-condensed table-bordered">
             <thead>
                 <tr>
                     <th>Título</th>

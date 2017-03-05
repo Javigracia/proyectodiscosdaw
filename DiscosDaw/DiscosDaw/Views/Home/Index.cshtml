@@ -1,26 +1,27 @@
-﻿<div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/fiesta_discopeque.jpg")');">
-    <h1>DiscoFer</h1>
-    <p class="lead">Ford Fairlane Records</p>
+﻿<div class="jumbotron" style="background-image: url('@Url.Content("~/Content/Images/fiesta_discopeque.jpg")'); color: white;">
+    <h1>Proyecto de Discos DEW</h1>
+    <p class="lead">Javier Gracia - Cristo Daniel Cabello</p>
     <p><a href="@Url.Action("Index", "Admin")" class="btn btn-primary btn-lg">Admin</a></p>
     <p><a href="@Url.Action("Index", "ListarDiscos")" class="btn btn-primary btn-lg">Ver Discos</a></p>
-    <p><a href="@Url.Action("Index", "ListarTop5")" class="btn btn-primary btn-lg">Los 5 mejor valorados</a></p>
+    <p><a href="@Url.Action("Index", "ListarTop5")" class="btn btn-primary btn-lg">Top 5</a></p>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <h2>Instruciones</h2>
+        <p>Para ver una lista de todos los Discos con sus intérpretes y la nota media de votos, pulse sobre "Ver Discos".</p>
+        <p>Puede ver también una gráfica con los 5 Discos más votados del momento si pulsa sobre "Top 5".</p>
+    </div>
+    <div class="col-md-6">
+        <h2>Zona de Usuarios</h2>
+        <p>En esta sección se realiza el Login o Registro de un Usuario para poder votar posteriormente.</p>
+        <p>Para ello primero pulse sobre "Admin" y una vez Registrado o Logueado, sobre "Votar".</p>
+    </div>
 </div>
 <div class="row">
     <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>ASP.NET Web API is a framework that makes it easy to build HTTP services that reach
-        a broad range of clients, including browsers and mobile devices. ASP.NET Web API
-        is an ideal platform for building RESTful applications on the .NET Framework.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301870">Learn more &raquo;</a></p>
+        <p>
+            @Html.ActionLink("Acerca de...", "About", null, new { @class = "btn btn-primary" })
+        </p>
     </div>
-    <div class="col-md-4">
-        <h2>Hola Mundo form Github</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301871">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301872">Learn more &raquo;</a></p>
-    </div>
+    <div class="col-md-8"></div>
 </div>

@@ -13,5 +13,19 @@ namespace DiscosDaw.Controllers
             ViewBag.Title = "Home Page";
             return View();
         }
+
+        public ActionResult About()
+        {
+            ViewBag.Message = "Descripción del proyecto Web.";
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            ViewBag.Message = "Página de contacto.";
+
+            return View();
+        }
     }
 }
