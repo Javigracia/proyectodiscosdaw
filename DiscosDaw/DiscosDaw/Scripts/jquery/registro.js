@@ -17,7 +17,7 @@ clientForm.prototype = {
         this.sendData = {
             "Nombre": $("form").find("#nick").val().trim(),
             "Email": $("form").find("#email").val().trim(),
-            "Password": $("form").find("#password").val(),
+            "Password": $("form").find("#Password").val(),
             "FechaNacimiento": $("form").find("#datepicker").val()
         };
         $.ajax({
@@ -47,15 +47,9 @@ clientForm.prototype = {
                 "password":
                 {
                     required: true,
+                    number: true,
                     minlength: 4,
                     maxlength: 12
-                },
-                "passwordRepeat":
-                {
-                    required: true,
-                    minlength: 4,
-                    maxlength: 12,
-                    equalTo: "#password"
                 },
                 "email":
                 {
@@ -72,14 +66,15 @@ clientForm.prototype = {
                 "password":
                 {
                     required: "Contraseña Requerida",
-                    maxlength: "La contyraseña no puede tener más de 12 caracteres",
-                    minlength: "No puede contener menos de 6 caracteres."
+                    number: "La contraseña tiene que ser numérica",
+                    maxlength: "La contraseña no puede tener más de 12 caracteres",
+                    minlength: "La contraseña no puede contener menos de 6 caracteres."
                 },
                 "passwordRepeat":
                 {
                     required: "Contraseña Requerida",
                     maxlength: "La contyraseña no puede tener más de 12 caracteres",
-                    minlength: "No puede contener menos de 6 caracteres.",
+                    minlength: "No puede contener menos de 4 caracteres.",
                     equalTo: "Las contraseñas no coinciden"
                 },
                 "email":

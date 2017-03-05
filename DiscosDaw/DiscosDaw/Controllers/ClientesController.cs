@@ -16,6 +16,7 @@ namespace DiscosDaw.Controllers
     {
         private DiscosEntities db = new DiscosEntities();
 
+        /*
         // GET: api/Clientes
         public IQueryable<Cliente> GetClientes()
         {
@@ -34,6 +35,7 @@ namespace DiscosDaw.Controllers
 
             return Ok(cliente);
         }
+        */
 
         // PUT: api/Clientes/5
         [ResponseType(typeof(void))]
