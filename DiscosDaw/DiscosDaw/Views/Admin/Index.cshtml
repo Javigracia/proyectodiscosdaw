@@ -3,11 +3,13 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Sección de clientes registrados.</h2>
+<h2>Sección de Usuarios registrados.</h2>
 
 <div>
-    <h1>Hasta aqui iria todo correcto y el Login estaria hecho</h1>
-    <p><a href="@Url.Action("Login", "Auth")" class="btn btn-primary btn-lg">Logout</a></p>
-    <p>Recuerda cerrar el navegador para borrar la sesión. Sino tu usuario y contraseña se mantendrá cargado.</p>
     <p><a href="@Url.Action("Votar")" class="btn btn-primary btn-lg">Votar Disco</a></p>
+</div>
+<div>
+
+    <p><a href="@Url.Action("Login", "Auth")" class="btn btn-primary btn-lg">Logout</a></p>
+    <p>Recuerda cerrar el navegador tras pulsar logout para borrar la sesión por seguridad. Sino tu usuario y contraseña podrian mantenerse cargados.</p>
 </div>
