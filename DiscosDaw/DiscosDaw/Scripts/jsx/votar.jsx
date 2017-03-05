@@ -127,7 +127,7 @@
                 }
                 else {
                     puntuacion = "" + puntuacion;
-                    if (puntuacion.includes(".") || puntuacion.includes(","))
+                    if (puntuacion.indexOf(".") != -1 || puntuacion.indexOf(",") != -1)
                     {
                         $("#errorPuntuacion").text("La puntuación tiene que ser un número entero");
                     }
