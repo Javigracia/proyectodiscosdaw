@@ -2,10 +2,7 @@
 
     $("#datepicker").datepicker();
     clientForm = new clientForm();
-    clientForm.virtualRandomKeyboard();
     clientForm.validate();
-    $("#virtualKeyboard").click(clientForm.write);
-    $("#clearKey").click(clientForm.clearKey);
 });
 
 function clientForm()
@@ -20,7 +17,7 @@ clientForm.prototype = {
         this.sendData = {
             "Nombre": $("form").find("#nick").val().trim(),
             "Email": $("form").find("#email").val().trim(),
-            "Password": $("form").find("#password").val(),
+            "Password": $("form").find("#Password").val(),
             "FechaNacimiento": $("form").find("#datepicker").val()
         };
         $.ajax({
@@ -35,36 +32,6 @@ clientForm.prototype = {
                 toastr["error"]("Ya existe un usuario con ese Nombre o Correo");
             }.bind(this)
         });
-    },
-
-    virtualRandomKeyboard : function()
-    {
-        var numeros = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-        var botones = $("button");
-        
-        for (var i = 1; i < botones.length; i++)
-        {
-            var rnd = Math.floor(Math.random() * numeros.length);
-            
-            botones[i].value = numeros[rnd];
-            botones[i].textContent = numeros[rnd];
-            numeros.splice(rnd, 1);
-        }
-    },
-
-    write : function(event)
-    {
-        if (event.target.tagName === "BUTTON" && $("#password").val().length < 12) {
-            var valor = $("#password").val();
-            $("#password").val(valor + event.target.value);
-            $("#passwordUser").val(valor + event.target.value);
-        }
-    },
-
-    clearKey: function()
-    {
-        $("#password").val("");
-        $("#passwordUser").val("");
     },
 
     validate: function (element) {
