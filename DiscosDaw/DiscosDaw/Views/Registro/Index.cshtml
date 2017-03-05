@@ -4,6 +4,7 @@
 }
         <link href="~/Content/toastr.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <link href="~/Content/registro.css" rel="stylesheet" />
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
         <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.16.0/jquery.validate.min.js"></script>
@@ -20,18 +21,29 @@
                 </div>
             </div>
 
-            <div class="form-group">
+            <div class="form-group" id="virtualKeyboard">
                 <label for="password" class="control-label col-sm-2">Contraseña*:</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control" id="password" name="password" placeholder="Introduzca su Contraseña"/>
+                    <input type="password" class="form-control" id="passwordUser" disabled/>
+                    <input type="password" class="form-control" id="password" name="password" />
                 </div>
-            </div>
-
-            <div class="form-group">
-                <label for="passwordRepeat" class="control-label col-sm-2">Repita su contraseña*:</label>
                 <div class="col-sm-4">
-                    <input type="password" class="form-control" id="passwordRepeat" name="passwordRepeat" placeholder="Repita su Contraseña"/>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                        <button type="button" class="btn btn-primary btn-sm"></button>
+                    </div>
                 </div>
+                <a href="#" id="clearKey" class="col-sm-2">Limpiar clave</a>
             </div>
 
             <div class="form-group">
