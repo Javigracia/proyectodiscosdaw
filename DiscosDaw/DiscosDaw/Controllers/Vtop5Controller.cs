@@ -12,7 +12,6 @@ using DiscosDaw;
 
 namespace DiscosDaw.Controllers
 {
-    [Authorize]
     public class Vtop5Controller : ApiController
     {
         private DiscosEntities db = new DiscosEntities();
